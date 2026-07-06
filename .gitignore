@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# deployment artifact (zip build for manual upload)
+website-upload.zip
+
+# claude local settings
+.claude/
