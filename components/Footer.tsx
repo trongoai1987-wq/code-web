@@ -22,19 +22,25 @@ export function Footer() {
           </div>
           <p className="text-sm leading-relaxed text-brand-100/90">{site.slogan}. {site.description}</p>
           <div className="mt-4 flex gap-2">
+            {site.social.facebook && (
             <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex size-9 items-center justify-center rounded-lg bg-brand-700 hover:bg-brand-600">
               <svg viewBox="0 0 24 24" className="size-4.5" fill="currentColor" aria-hidden="true">
                 <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5H17V3.6c-.29-.04-1.28-.12-2.43-.12-2.4 0-4.07 1.47-4.07 4.17V9.9H7.8V13h2.7v8h3z" />
               </svg>
             </a>
+            )}
+            {site.social.zaloOA && (
             <a href={site.social.zaloOA} target="_blank" rel="noopener noreferrer" aria-label="Zalo" className="flex size-9 items-center justify-center rounded-lg bg-brand-700 hover:bg-brand-600">
               <MessageCircle className="size-4.5" />
             </a>
+            )}
+            {site.social.youtube && (
             <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex size-9 items-center justify-center rounded-lg bg-brand-700 hover:bg-brand-600">
               <svg viewBox="0 0 24 24" className="size-4.5" fill="currentColor" aria-hidden="true">
                 <path d="M23 12s0-3.2-.41-4.73a2.5 2.5 0 0 0-1.76-1.77C19.3 5.09 12 5.09 12 5.09s-7.3 0-8.83.41a2.5 2.5 0 0 0-1.76 1.77C1 8.8 1 12 1 12s0 3.2.41 4.73a2.5 2.5 0 0 0 1.76 1.77c1.53.41 8.83.41 8.83.41s7.3 0 8.83-.41a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15 12l-5.25 3.02z" />
               </svg>
             </a>
+            )}
           </div>
         </div>
 
@@ -93,6 +99,7 @@ export function Footer() {
       <div className="border-t border-brand-700">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-5 text-xs text-brand-100/70 sm:flex-row">
           <p>© {new Date().getFullYear()} {site.name}. Bảo lưu mọi quyền.</p>
+          <p>Giấy chứng nhận đủ điều kiện kinh doanh dược số: {site.license}</p>
           <p>Website mang tính chất tham khảo, không thay thế tư vấn y khoa chuyên môn.</p>
         </div>
       </div>

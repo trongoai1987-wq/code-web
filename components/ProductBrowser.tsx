@@ -4,16 +4,16 @@ import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
+import { ZaloButton, CallButton } from "@/components/ContactButtons";
 import { categories, products, type CategorySlug } from "@/lib/data";
 import { cn } from "@/lib/format";
 
-type SortKey = "popular" | "price-asc" | "price-desc" | "rating";
+type SortKey = "default" | "price-asc" | "price-desc";
 
 const sortOptions: Array<{ key: SortKey; label: string }> = [
-  { key: "popular", label: "Bán chạy" },
+  { key: "default", label: "Mặc định" },
   { key: "price-asc", label: "Giá thấp → cao" },
   { key: "price-desc", label: "Giá cao → thấp" },
-  { key: "rating", label: "Đánh giá cao" },
 ];
 
 /** Danh sách + tìm kiếm + lọc sản phẩm (client). */
@@ -29,7 +29,7 @@ export function ProductBrowser({
   const [activeCategory, setActiveCategory] = useState<CategorySlug | "all">(
     initialCategory ?? "all",
   );
-  const [sort, setSort] = useState<SortKey>("popular");
+  const [sort, setSort] = useState<SortKey>("default");
   const [showFilters, setShowFilters] = useState(false);
 
   // Đồng bộ ô tìm kiếm khi URL ?q= thay đổi (điều hướng từ Header).
@@ -57,14 +57,32 @@ export function ProductBrowser({
           return a.price - b.price;
         case "price-desc":
           return b.price - a.price;
-        case "rating":
-          return b.rating - a.rating;
         default:
-          return b.sold - a.sold;
+          return a.id - b.id;
       }
     });
     return list;
   }, [keyword, activeCategory, sort]);
+
+  // Chưa có sản phẩm nào trong danh sách: không hiện ô tìm kiếm / bộ lọc rỗng.
+  if (products.length === 0) {
+    return (
+      <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-6 py-16 text-center">
+        <p className="text-lg font-semibold text-slate-700">
+          Danh mục sản phẩm đang được cập nhật
+        </p>
+        <p className="mx-auto mt-2 max-w-md text-sm text-slate-500">
+          Nhà thuốc đang đưa dần danh sách sản phẩm lên website. Trong lúc chờ,
+          bạn cần sản phẩm nào xin gọi hoặc nhắn Zalo để dược sĩ kiểm tra hàng
+          và báo giá.
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <ZaloButton label="Hỏi dược sĩ qua Zalo" />
+          <CallButton />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
@@ -195,7 +213,7 @@ export function ProductBrowser({
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 py-16 text-center">
+          <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-6 py-16 text-center">
             <p className="font-semibold text-slate-700">
               Không tìm thấy sản phẩm phù hợp
             </p>

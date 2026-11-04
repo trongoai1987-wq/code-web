@@ -52,10 +52,11 @@ export default function RootLayout({
     email: site.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: site.address,
+      streetAddress: site.addressShort,
+      addressLocality: site.addressArea,
       addressCountry: "VN",
     },
-    openingHours: "Mo-Su 07:30-22:00",
+    openingHours: site.openingHoursSchema,
     slogan: site.slogan,
   };
 

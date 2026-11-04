@@ -2,7 +2,7 @@ import Link from "next/link";
 import {
   ShieldCheck,
   ArrowRight,
-  Star,
+  MessageCircle,
   Store,
   CalendarDays,
 } from "lucide-react";
@@ -10,18 +10,11 @@ import { Icon } from "@/components/Icon";
 import { SectionHeading } from "@/components/Section";
 import { ProductCard } from "@/components/ProductCard";
 import { ZaloButton, CallButton } from "@/components/ContactButtons";
-import {
-  categories,
-  commitments,
-  products,
-  articles,
-  getFeaturedProducts,
-} from "@/lib/data";
+import { categories, commitments, articles, getFeaturedProducts } from "@/lib/data";
 import { site } from "@/lib/site";
 
 export default function HomePage() {
   const featured = getFeaturedProducts(8);
-  const newest = products.filter((p) => p.tags.includes("new")).slice(0, 4);
 
   return (
     <>
@@ -40,8 +33,9 @@ export default function HomePage() {
               gia đình bạn mỗi ngày
             </h1>
             <p className="mt-4 max-w-lg text-base text-brand-50/90 sm:text-lg">
-              {site.name} — tra cứu hàng nghìn sản phẩm thuốc, thực phẩm chức năng,
-              thiết bị y tế chính hãng. Đặt hàng nhanh chóng qua Zalo hoặc hotline.
+              {site.name} tại {site.addressArea} — thuốc, thực phẩm chức năng và
+              thiết bị y tế có nguồn gốc rõ ràng. Gọi hoặc nhắn Zalo để dược sĩ
+              kiểm tra hàng và báo giá.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
@@ -54,9 +48,9 @@ export default function HomePage() {
               <ZaloButton />
             </div>
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm">
-              <Stat value="10.000+" label="Sản phẩm chính hãng" />
-              <Stat value="4 chi nhánh" label="Trên toàn thành phố" />
-              <Stat value="50.000+" label="Khách hàng tin dùng" />
+              <Stat value={site.addressShort} label={site.addressArea} />
+              <Stat value={site.hoursShort} label="Mở cửa mỗi ngày" />
+              <Stat value={`Hotline ${site.hotline}`} label="Gọi hoặc nhắn Zalo" />
             </div>
           </div>
 
@@ -133,33 +127,51 @@ export default function HomePage() {
       <section className="bg-slate-50/70 py-12">
         <div className="container-x">
           <SectionHeading
-            title="Sản phẩm nổi bật"
-            subtitle="Được khách hàng tin dùng nhiều nhất"
-            href="/san-pham/"
+            title="Sản phẩm tại nhà thuốc"
+            subtitle="Một số sản phẩm có tại nhà thuốc"
+            href={featured.length > 0 ? "/san-pham/" : undefined}
           />
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {featured.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
+          {featured.length > 0 ? (
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+              {featured.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-8 text-center">
+              <p className="font-semibold text-slate-700">
+                Danh mục sản phẩm đang được cập nhật
+              </p>
+              <p className="mx-auto mt-2 max-w-md text-sm text-slate-500">
+                Nhà thuốc đang hoàn thiện danh sách sản phẩm trên website. Bạn
+                cần tìm thuốc hay sản phẩm nào, vui lòng gọi hoặc nhắn Zalo để
+                dược sĩ kiểm tra và báo giá ngay.
+              </p>
+              <div className="mt-5 flex flex-wrap justify-center gap-3">
+                <ZaloButton label="Hỏi dược sĩ qua Zalo" />
+                <CallButton />
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* ===== BANNER KHUYẾN MÃI ===== */}
+      {/* ===== BANNER LIÊN HỆ DƯỢC SĨ ===== */}
       <section className="container-x py-12">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-accent-500 to-accent-600 px-6 py-10 text-white sm:px-12 sm:py-14">
           <div className="absolute -right-10 -top-10 size-48 rounded-full bg-white/10" />
           <div className="relative flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
             <div>
               <p className="mb-2 inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-sm font-medium">
-                <Star className="size-4 fill-white" aria-hidden="true" /> Ưu đãi thành viên
+                <MessageCircle className="size-4" aria-hidden="true" />
+                Hỏi đáp cùng dược sĩ
               </p>
               <h2 className="text-2xl font-extrabold sm:text-3xl">
-                Tư vấn miễn phí cùng dược sĩ
+                Chưa biết nên dùng sản phẩm nào?
               </h2>
               <p className="mt-2 max-w-xl text-white/90">
-                Nhắn tin Zalo hoặc gọi hotline để được dược sĩ tư vấn sản phẩm phù
-                hợp và nhận nhiều ưu đãi hấp dẫn.
+                Nhắn Zalo hoặc gọi {site.hotline} để dược sĩ của nhà thuốc kiểm
+                tra sản phẩm còn hàng, hướng dẫn cách dùng và báo giá.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -169,18 +181,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ===== HÀNG MỚI VỀ ===== */}
-      {newest.length > 0 && (
-        <section className="container-x pb-12">
-          <SectionHeading title="Hàng mới về" subtitle="Cập nhật sản phẩm mới nhất" href="/san-pham/" />
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {newest.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        </section>
-      )}
 
       {/* ===== TIN SỨC KHỎE ===== */}
       <section className="bg-slate-50/70 py-12">
@@ -224,8 +224,8 @@ export default function HomePage() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <p className="text-xl font-extrabold text-white">{value}</p>
-      <p className="text-xs text-brand-50/80">{label}</p>
+      <p className="text-lg font-extrabold text-white">{value}</p>
+      <p className="text-[13px] text-brand-50/80">{label}</p>
     </div>
   );
 }

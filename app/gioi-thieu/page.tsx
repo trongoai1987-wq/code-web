@@ -3,7 +3,7 @@ import { Target, Eye, HeartHandshake, Store, Users, Award } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ZaloButton, CallButton } from "@/components/ContactButtons";
-import { commitments, branches } from "@/lib/data";
+import { commitments } from "@/lib/data";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { icon: Store, value: `${branches.length} chi nhánh`, label: "Trên toàn thành phố" },
-  { icon: Users, value: "50.000+", label: "Khách hàng tin dùng" },
-  { icon: Award, value: "10.000+", label: "Sản phẩm chính hãng" },
+  { icon: Store, value: site.addressArea, label: site.addressShort },
+  { icon: Users, value: "Dược sĩ", label: "Tư vấn trực tiếp" },
+  { icon: Award, value: "Nguồn gốc", label: "Rõ ràng, có hóa đơn" },
 ];
 
 export default function AboutPage() {
@@ -53,10 +53,10 @@ export default function AboutPage() {
                 khỏe của khách hàng.
               </p>
               <p>
-                Với hệ thống chi nhánh ngày càng mở rộng cùng đội ngũ dược sĩ
-                được đào tạo bài bản, chúng tôi cam kết mang đến sản phẩm chính
-                hãng, nguồn gốc rõ ràng và dịch vụ tư vấn tận tình, đúng bệnh,
-                đúng thuốc.
+                Dược sĩ của nhà thuốc tư vấn sản phẩm phù hợp với nhu cầu, hướng
+                dẫn cách dùng và liều dùng theo đúng hướng dẫn của nhà sản xuất.
+                Với các trường hợp cần chẩn đoán hoặc thuốc kê đơn, chúng tôi
+                luôn khuyên khách hàng đến khám tại cơ sở y tế.
               </p>
             </div>
           </div>
@@ -85,7 +85,7 @@ export default function AboutPage() {
           <ValueCard
             icon={Eye}
             title="Tầm nhìn"
-            text="Trở thành hệ thống nhà thuốc bán lẻ được tin yêu hàng đầu, nơi mọi người dân dễ dàng tiếp cận sản phẩm chăm sóc sức khỏe chất lượng."
+            text="Trở thành hệ thống nhà thuốc bán lẻ được tin yêu, nơi mọi người dân dễ dàng tiếp cận sản phẩm chăm sóc sức khỏe chất lượng."
           />
           <ValueCard
             icon={Target}

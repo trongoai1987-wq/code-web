@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import {
-  Star,
   ShieldCheck,
   Truck,
   BadgeCheck,
@@ -19,8 +18,9 @@ import {
   categoryMap,
   getProductBySlug,
   getRelatedProducts,
+  isSupplement,
 } from "@/lib/data";
-import { formatPrice, discountPercent } from "@/lib/format";
+import { formatPrice } from "@/lib/format";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -54,10 +54,14 @@ export default async function ProductDetailPage({
   if (!product) notFound();
 
   const cat = categoryMap[product.category];
-  const percent = discountPercent(product.price, product.originalPrice);
   const related = getRelatedProducts(product, 4);
+  const supplement = isSupplement(product);
+  // Thuốc kê đơn: chỉ tra cứu thông tin và hỏi dược sĩ, không mời đặt hàng.
+  const canOrder = !product.prescription;
 
-  const zaloMessage = `Xin chào Nhà thuốc Thiện Hạnh, tôi muốn đặt mua: ${product.name} (${product.unit}).`;
+  const zaloMessage = canOrder
+    ? `Xin chào Nhà thuốc Thiện Hạnh, tôi muốn đặt mua: ${product.name} (${product.unit}).`
+    : `Xin chào Nhà thuốc Thiện Hạnh, tôi muốn hỏi dược sĩ về: ${product.name}.`;
 
   return (
     <>
@@ -77,11 +81,6 @@ export default async function ProductDetailPage({
               <div className="aspect-square">
                 <ProductThumb product={product} />
               </div>
-              {percent > 0 && (
-                <span className="absolute left-4 top-4 rounded-xl bg-rose-500 px-3 py-1.5 text-sm font-bold text-white">
-                  -{percent}%
-                </span>
-              )}
             </div>
           </div>
 
@@ -96,22 +95,6 @@ export default async function ProductDetailPage({
 
             <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-600">
               <span className="inline-flex items-center gap-1.5">
-                <Star
-                  className="size-4 fill-amber-400 text-amber-400"
-                  aria-hidden="true"
-                />
-                <span className="font-semibold text-slate-800">
-                  {product.rating}
-                </span>
-                <span>đánh giá</span>
-              </span>
-              <span>
-                Đã bán{" "}
-                <span className="font-semibold text-slate-800">
-                  {product.sold.toLocaleString("vi-VN")}
-                </span>
-              </span>
-              <span className="inline-flex items-center gap-1.5">
                 <MapPin className="size-4 text-slate-400" aria-hidden="true" />
                 {product.origin}
               </span>
@@ -120,12 +103,13 @@ export default async function ProductDetailPage({
             {/* Giá */}
             <div className="mt-5 rounded-2xl bg-brand-50/70 p-5">
               <div className="flex flex-wrap items-end gap-3">
-                <span className="text-3xl font-extrabold text-accent-600">
-                  {formatPrice(product.price)}
-                </span>
-                {product.originalPrice && (
-                  <span className="pb-1 text-base text-slate-400 line-through">
-                    {formatPrice(product.originalPrice)}
+                {canOrder && product.price > 0 ? (
+                  <span className="text-3xl font-extrabold text-accent-600">
+                    {formatPrice(product.price)}
+                  </span>
+                ) : (
+                  <span className="text-2xl font-extrabold text-brand-700">
+                    Liên hệ dược sĩ
                   </span>
                 )}
                 <span className="pb-1 text-sm text-slate-500">
@@ -133,9 +117,14 @@ export default async function ProductDetailPage({
                 </span>
               </div>
               {product.prescription && (
-                <p className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">
-                  <FileText className="size-3.5" aria-hidden="true" />
-                  Sản phẩm cần tư vấn/kê đơn của dược sĩ
+                <p className="mt-3 flex items-start gap-1.5 rounded-lg bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800">
+                  <FileText
+                    className="mt-0.5 size-4 shrink-0"
+                    aria-hidden="true"
+                  />
+                  Thuốc kê đơn — thông tin trên trang chỉ để tra cứu. Chỉ dùng
+                  khi có chỉ định của bác sĩ. Vui lòng mang đơn thuốc đến nhà
+                  thuốc.
                 </p>
               )}
             </div>
@@ -160,21 +149,29 @@ export default async function ProductDetailPage({
               </ul>
             )}
 
+            {/* Câu cảnh báo bắt buộc với thực phẩm chức năng */}
+            {supplement && (
+              <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-sm font-medium text-amber-900">
+                Sản phẩm này không phải là thuốc và không có tác dụng thay thế
+                thuốc chữa bệnh.
+              </p>
+            )}
+
             {/* CTA */}
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <ZaloButton
                 message={zaloMessage}
                 className="flex-1"
-                label="Đặt hàng qua Zalo"
+                label={canOrder ? "Đặt hàng qua Zalo" : "Hỏi dược sĩ qua Zalo"}
               />
               <CallButton className="flex-1" />
             </div>
 
             {/* Cam kết nhỏ */}
             <div className="mt-6 grid grid-cols-3 gap-3 border-t border-slate-100 pt-6 text-center">
-              <MiniTrust icon={BadgeCheck} label="100% chính hãng" />
+              <MiniTrust icon={BadgeCheck} label="Nguồn gốc rõ ràng" />
               <MiniTrust icon={ShieldCheck} label="Dược sĩ tư vấn" />
-              <MiniTrust icon={Truck} label="Giao nhanh tận nơi" />
+              <MiniTrust icon={Truck} label="Đặt hàng qua Zalo" />
             </div>
           </div>
         </div>
@@ -223,7 +220,7 @@ export default async function ProductDetailPage({
                 />
               </dl>
             </div>
-            <p className="mt-4 rounded-xl bg-slate-50 p-4 text-xs leading-relaxed text-slate-500">
+            <p className="mt-4 rounded-xl bg-slate-50 p-4 text-sm leading-relaxed text-slate-600">
               Thông tin sản phẩm chỉ mang tính tham khảo, không thay thế cho tư
               vấn y khoa. Vui lòng đọc kỹ hướng dẫn sử dụng và hỏi ý kiến dược sĩ
               trước khi dùng.

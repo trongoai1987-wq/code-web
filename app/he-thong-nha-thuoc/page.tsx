@@ -21,8 +21,8 @@ export default function BranchesPage() {
             Hệ thống nhà thuốc Thiện Hạnh
           </h1>
           <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600">
-            {branches.length} chi nhánh phục vụ bạn trên toàn thành phố. Ghé nhà
-            thuốc gần nhất hoặc đặt hàng nhanh qua Zalo/hotline.
+            Nhà thuốc phục vụ bà con tại M'Đrắk. Ghé nhà
+            thuốc hoặc đặt hàng nhanh qua Zalo/điện thoại.
           </p>
         </div>
       </section>

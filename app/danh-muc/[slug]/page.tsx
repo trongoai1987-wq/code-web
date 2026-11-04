@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Icon } from "@/components/Icon";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ProductCard } from "@/components/ProductCard";
+import { ZaloButton, CallButton } from "@/components/ContactButtons";
 import {
   categories,
   categoryMap,
@@ -87,24 +88,34 @@ export default async function CategoryPage({
 
       {/* Danh sách sản phẩm */}
       <section className="container-x py-8">
-        <p className="mb-4 text-sm text-slate-500">
-          <span className="font-semibold text-slate-800">{items.length}</span>{" "}
-          sản phẩm trong danh mục
-        </p>
         {items.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {items.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
+          <>
+            <p className="mb-4 text-sm text-slate-500">
+              <span className="font-semibold text-slate-800">
+                {items.length}
+              </span>{" "}
+              sản phẩm trong danh mục
+            </p>
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+              {items.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          </>
         ) : (
-          <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 py-16 text-center">
+          <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-6 py-16 text-center">
             <p className="font-semibold text-slate-700">
-              Chưa có sản phẩm trong danh mục này
+              Danh mục này đang được cập nhật
             </p>
-            <p className="mt-1 text-sm text-slate-500">
-              Vui lòng liên hệ dược sĩ để được tư vấn sản phẩm phù hợp.
+            <p className="mx-auto mt-2 max-w-md text-sm text-slate-500">
+              Nhà thuốc có bán các sản phẩm thuộc nhóm {cat.name.toLowerCase()}.
+              Bạn cần sản phẩm nào, xin gọi hoặc nhắn Zalo để dược sĩ kiểm tra
+              hàng và báo giá.
             </p>
+            <div className="mt-5 flex flex-wrap justify-center gap-3">
+              <ZaloButton label="Hỏi dược sĩ qua Zalo" />
+              <CallButton />
+            </div>
           </div>
         )}
       </section>
