@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ProductBrowser } from "@/components/ProductBrowser";
+import { products } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Tất cả sản phẩm",
@@ -19,7 +20,9 @@ export default function ProductsPage() {
             Tất cả sản phẩm
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            Chọn danh mục, tìm kiếm và sắp xếp để tìm sản phẩm phù hợp với bạn.
+            {products.length > 0
+              ? "Chọn danh mục, tìm kiếm và sắp xếp để tìm sản phẩm phù hợp với bạn."
+              : "Danh sách sản phẩm đang được nhà thuốc cập nhật lên website."}
           </p>
         </div>
         <Suspense fallback={<BrowserFallback />}>

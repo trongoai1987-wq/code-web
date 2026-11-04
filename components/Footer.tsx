@@ -50,7 +50,7 @@ export function Footer() {
           <ul className="space-y-2.5 text-sm">
             {categories.slice(0, 6).map((c) => (
               <li key={c.slug}>
-                <Link href={`/danh-muc/${c.slug}/`} className="text-brand-100/90 transition-colors hover:text-white">
+                <Link href={`/danh-muc/${c.slug}/`} className="inline-block py-1 text-brand-100/90 transition-colors hover:text-white">
                   {c.name}
                 </Link>
               </li>
@@ -62,11 +62,11 @@ export function Footer() {
         <div>
           <h3 className="mb-4 text-sm font-bold uppercase tracking-wide text-white">Về Thiện Hạnh</h3>
           <ul className="space-y-2.5 text-sm">
-            <li><Link href="/gioi-thieu/" className="text-brand-100/90 hover:text-white">Giới thiệu</Link></li>
-            <li><Link href="/he-thong-nha-thuoc/" className="text-brand-100/90 hover:text-white">Hệ thống nhà thuốc</Link></li>
-            <li><Link href="/tin-suc-khoe/" className="text-brand-100/90 hover:text-white">Tin sức khỏe</Link></li>
-            <li><Link href="/lien-he/" className="text-brand-100/90 hover:text-white">Liên hệ</Link></li>
-            <li><Link href="/san-pham/" className="text-brand-100/90 hover:text-white">Tất cả sản phẩm</Link></li>
+            <li><Link href="/gioi-thieu/" className="inline-block py-1 text-brand-100/90 hover:text-white">Giới thiệu</Link></li>
+            <li><Link href="/he-thong-nha-thuoc/" className="inline-block py-1 text-brand-100/90 hover:text-white">Hệ thống nhà thuốc</Link></li>
+            <li><Link href="/tin-suc-khoe/" className="inline-block py-1 text-brand-100/90 hover:text-white">Tin sức khỏe</Link></li>
+            <li><Link href="/lien-he/" className="inline-block py-1 text-brand-100/90 hover:text-white">Liên hệ</Link></li>
+            <li><Link href="/san-pham/" className="inline-block py-1 text-brand-100/90 hover:text-white">Tất cả sản phẩm</Link></li>
           </ul>
         </div>
 
