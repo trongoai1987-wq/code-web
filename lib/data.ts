@@ -174,6 +174,43 @@ export const products: Product[] = [
       "Công ty TNHH Nước giải khát Kirin Việt Nam — Lô D3A-CN, KCN Mỹ Phước 2, P. Bến Cát, TP. Hồ Chí Minh, Việt Nam.",
     prescription: false,
   },
+  {
+    id: 2,
+    slug: "khuong-thao-dan-gold-30-vien",
+    name: "Khương Thảo Đan Gold",
+    category: "thuc-pham-chuc-nang",
+    brand: "Thái Minh",
+    origin: "Việt Nam",
+    price: 169000,
+    unit: "Lọ 30 viên nang",
+    image: "/san-pham/khuong-thao-dan-gold.jpg",
+    infoImage: "/san-pham/khuong-thao-dan-gold-nhan.jpg",
+    infoImageAlt:
+      "Nhãn sản phẩm Khương Thảo Đan Gold: thành phần, công dụng, hướng dẫn sử dụng và số đăng ký 6922/2021/ĐKSP.",
+    shortDescription:
+      "Thực phẩm bảo vệ sức khỏe giúp giảm đau, làm trơn khớp và phục hồi sụn khớp.",
+    description: [
+      "Khương Thảo Đan Gold là thực phẩm bảo vệ sức khỏe dạng viên nang của Dược phẩm Thái Minh, kết hợp các vị thảo dược quen thuộc với hoạt chất KGA1 chiết xuất từ Địa liền, CARYOTIN chiết xuất từ quả Đủng đỉnh và Collagen type II.",
+      "Đối tượng sử dụng: người bị thoái hóa khớp, thoái hóa đốt sống, vôi hóa cột sống, thoát vị đĩa đệm, gai đốt sống; người bị đau nhức mỏi khớp, đau lưng, đau vai gáy, sưng khớp, tê buồn chân tay do thoái hóa khớp.",
+      "Số đăng ký sản phẩm: 6922/2021/ĐKSP. Hạn dùng 36 tháng kể từ ngày sản xuất, xem cụ thể trên bao bì.",
+    ],
+    ingredients:
+      "Cho 1 viên 600mg — Cao tổng hợp 380mg (Cao Độc hoạt 76mg, Cao Tang ký sinh 76mg, Cao Ngưu tất 38mg, Cao Phòng phong 38mg, Cao Đương quy 38mg, Cao Thổ phục linh 38mg, Cao Hy thiêm 38mg, Cao Xuyên khung 19mg, Cao Quế chi 19mg); CARYOTIN (chiết xuất quả Đủng đỉnh) 70mg; KGA1 (chiết xuất Địa liền) 20mg; Collagen type II 20mg. Phụ liệu: vỏ nang gelatin, tinh bột, talc, calcium carbonate, magnesium stearate, ethanol 96%.",
+    uses: [
+      "Giúp làm trơn khớp và phục hồi sụn khớp",
+      "Hỗ trợ giảm nguy cơ thoái hóa khớp, thoái hóa đốt sống, thoát vị đĩa đệm và giúp làm chậm quá trình thoái hóa khớp, thoái hóa cột sống",
+      "Hỗ trợ giảm đau nhức, giảm các triệu chứng viêm khớp, đau mỏi vai gáy do thoái hóa khớp, thoái hóa cột sống",
+    ],
+    dosage:
+      "Uống tăng cường: ngày 3 lần, mỗi lần 2 viên, uống sau khi ăn. Uống duy trì: ngày 2 lần, mỗi lần 2 viên, uống sau khi ăn.",
+    notes:
+      "Không dùng cho phụ nữ mang thai, phụ nữ đang cho con bú và trẻ em dưới 12 tuổi. Không dùng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Bảo quản nơi khô ráo, thoáng mát, tránh ánh nắng trực tiếp, để xa tầm tay trẻ em.",
+    distributor:
+      "Công ty Cổ phần Dược phẩm Thái Minh — Số 3, ngõ 2, phố Thọ Tháp, phường Dịch Vọng, quận Cầu Giấy, Hà Nội.",
+    manufacturer:
+      "Công ty Cổ phần Công nghệ cao Thái Minh — Lô CN5, Khu công nghiệp Thạch Thất – Quốc Oai, thị trấn Quốc Oai, huyện Quốc Oai, Hà Nội.",
+    prescription: false,
+  },
 ];
 
 export interface Branch {
