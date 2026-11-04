@@ -47,6 +47,10 @@ export interface Product {
   uses?: string[];
   dosage?: string;
   notes?: string;
+  /** "Sản phẩm của ..." — chép đúng như ghi trên nhãn. */
+  distributor?: string;
+  /** "Sản xuất tại ..." — chép đúng như ghi trên nhãn. */
+  manufacturer?: string;
   /** true = thuốc kê đơn: web chỉ hiển thị thông tin tra cứu, không có nút đặt hàng. */
   prescription: boolean;
 }
@@ -144,10 +148,9 @@ export const products: Product[] = [
     name: "KIRIN iMUSE — Nước giải khát hương chanh & sữa chua",
     category: "do-uong-suc-khoe",
     brand: "KIRIN",
-    // CHƯA XÁC NHẬN: đọc trên nhãn chai rồi sửa lại cho đúng.
-    origin: "Đang cập nhật",
+    origin: "Việt Nam",
     price: 10000,
-    unit: "Chai",
+    unit: "Chai 430ml",
     image: "/san-pham/kirin-imuse-chanh-sua-chua.jpg",
     infoImage: "/san-pham/kirin-imuse-thong-tin.jpg",
     infoImageAlt:
@@ -165,6 +168,10 @@ export const products: Product[] = [
     ],
     notes:
       "Đây là nước giải khát, không phải thuốc. Thông tin về Lc-PLASMA theo công bố của Tập đoàn Kirin.",
+    distributor:
+      "Công ty Cổ phần Thực phẩm Quốc tế — Lô 13, KCN Tam Phước, P. Tam Phước, TP. Đồng Nai.",
+    manufacturer:
+      "Công ty TNHH Nước giải khát Kirin Việt Nam — Lô D3A-CN, KCN Mỹ Phước 2, P. Bến Cát, TP. Hồ Chí Minh, Việt Nam.",
     prescription: false,
   },
 ];

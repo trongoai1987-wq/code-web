@@ -204,6 +204,29 @@ export default async function ProductDetailPage({
               </DetailBlock>
             )}
 
+            {(product.distributor || product.manufacturer) && (
+              <DetailBlock title="Nhà sản xuất & phân phối">
+                <div className="space-y-2 text-slate-600">
+                  {product.distributor && (
+                    <p>
+                      <span className="font-medium text-slate-700">
+                        Sản phẩm của:
+                      </span>{" "}
+                      {product.distributor}
+                    </p>
+                  )}
+                  {product.manufacturer && (
+                    <p>
+                      <span className="font-medium text-slate-700">
+                        Sản xuất tại:
+                      </span>{" "}
+                      {product.manufacturer}
+                    </p>
+                  )}
+                </div>
+              </DetailBlock>
+            )}
+
             {product.infoImage && (
               <DetailBlock title="Thông tin từ nhà sản xuất">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
