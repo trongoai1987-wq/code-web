@@ -1,6 +1,7 @@
 import {
   Pill,
   Leaf,
+  CupSoda,
   Sparkles,
   Baby,
   HeartPulse,
@@ -18,6 +19,7 @@ import {
 const map: Record<string, LucideIcon> = {
   Pill,
   Leaf,
+  CupSoda,
   Sparkles,
   Baby,
   HeartPulse,

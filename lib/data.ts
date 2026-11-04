@@ -12,6 +12,7 @@ import { site } from "@/lib/site";
 export type CategorySlug =
   | "thuoc"
   | "thuc-pham-chuc-nang"
+  | "do-uong-suc-khoe"
   | "vitamin-khoang-chat"
   | "me-va-be"
   | "cham-soc-ca-nhan"
@@ -37,6 +38,9 @@ export interface Product {
   price: number;
   unit: string;
   image?: string;
+  /** Ảnh thông tin của nhà sản xuất, hiện ở cuối trang chi tiết (tuỳ chọn). */
+  infoImage?: string;
+  infoImageAlt?: string;
   shortDescription: string;
   description: string[];
   ingredients?: string;
@@ -59,6 +63,12 @@ export const categories: Category[] = [
     name: "Thực phẩm chức năng",
     icon: "Leaf",
     description: "Hỗ trợ tăng cường sức khỏe, đề kháng và phòng ngừa bệnh tật.",
+  },
+  {
+    slug: "do-uong-suc-khoe",
+    name: "Đồ uống sức khỏe",
+    icon: "CupSoda",
+    description: "Nước giải khát và đồ uống hỗ trợ sức khỏe hằng ngày.",
   },
   {
     slug: "vitamin-khoang-chat",
@@ -127,7 +137,37 @@ export const categoryMap: Record<CategorySlug, Category> = Object.fromEntries(
  *     prescription: false,                 // true nếu là thuốc kê đơn
  *   },
  */
-export const products: Product[] = [];
+export const products: Product[] = [
+  {
+    id: 1,
+    slug: "kirin-imuse-huong-chanh-sua-chua",
+    name: "KIRIN iMUSE — Nước giải khát hương chanh & sữa chua",
+    category: "do-uong-suc-khoe",
+    brand: "KIRIN",
+    // CHƯA XÁC NHẬN: đọc trên nhãn chai rồi sửa lại cho đúng.
+    origin: "Đang cập nhật",
+    price: 10000,
+    unit: "Chai",
+    image: "/san-pham/kirin-imuse-chanh-sua-chua.jpg",
+    infoImage: "/san-pham/kirin-imuse-thong-tin.jpg",
+    infoImageAlt:
+      "Thông tin sản phẩm KIRIN iMUSE và Lc-PLASMA do Tập đoàn Kirin cung cấp.",
+    shortDescription:
+      "Nước giải khát hương chanh & sữa chua, thanh mát sảng khoái, chứa 100 tỷ Lc-PLASMA mỗi chai.",
+    description: [
+      "iMUSE là nước giải khát của Tập đoàn Kirin (Nhật Bản), kết hợp hương chanh và sữa chua cho vị thanh mát, sảng khoái. Ngon nhất khi uống lạnh.",
+      "Mỗi chai chứa 100 tỷ Lc-PLASMA (Lactococcus lactis) — chủng vi khuẩn axit lactic được Tập đoàn Kirin nghiên cứu, giúp hỗ trợ tăng đề kháng.",
+      "Giá bán lẻ 10.000đ/chai. Mua nguyên thùng 24 chai: 240.000đ.",
+    ],
+    uses: [
+      "Hỗ trợ tăng đề kháng với 100 tỷ Lc-PLASMA mỗi chai",
+      "Hương chanh & sữa chua, thanh mát sảng khoái",
+    ],
+    notes:
+      "Đây là nước giải khát, không phải thuốc. Thông tin về Lc-PLASMA theo công bố của Tập đoàn Kirin.",
+    prescription: false,
+  },
+];
 
 export interface Branch {
   id: number;
@@ -244,6 +284,7 @@ export function getFeaturedProducts(limit = 8): Product[] {
 /** Các nhóm cần hiển thị câu cảnh báo bắt buộc của thực phẩm chức năng. */
 const supplementCategories: CategorySlug[] = [
   "thuc-pham-chuc-nang",
+  "do-uong-suc-khoe",
   "vitamin-khoang-chat",
   "cham-soc-sac-dep",
 ];

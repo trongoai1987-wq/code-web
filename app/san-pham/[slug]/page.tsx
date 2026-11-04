@@ -203,6 +203,18 @@ export default async function ProductDetailPage({
                 <p className="text-slate-600">{product.notes}</p>
               </DetailBlock>
             )}
+
+            {product.infoImage && (
+              <DetailBlock title="Thông tin từ nhà sản xuất">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={product.infoImage}
+                  alt={product.infoImageAlt ?? product.name}
+                  loading="lazy"
+                  className="w-full rounded-2xl border border-slate-100"
+                />
+              </DetailBlock>
+            )}
           </div>
 
           {/* Bảng thông số */}
