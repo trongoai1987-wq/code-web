@@ -28,7 +28,9 @@ export const site = {
   phone: "0962 380 448",
   // Link Zalo: dùng số điện thoại (bỏ số 0, thêm 84) hoặc để nguyên số
   zalo: "0946544440",
-  email: "cskh@nhathuocthienhanh.com",
+  // Hộp thư cskh@nhathuocthienhanh.com chưa được tạo nên tạm dùng Gmail của chủ
+  // nhà thuốc (xác nhận 04/11/2026). Khi lập hộp thư theo tên miền thì đổi lại.
+  email: "trongoai@gmail.com",
   address: `${addressShort}, ${addressArea}`,
   addressShort,
   addressArea,
