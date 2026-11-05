@@ -132,8 +132,8 @@ export default function AboutPage() {
             miễn phí cho bạn.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <ZaloButton className="bg-accent-500 hover:bg-accent-600" />
-            <CallButton className="border-white text-white hover:bg-white/10" />
+            <ZaloButton variant="accent" />
+            <CallButton variant="outlineWhite" />
           </div>
         </div>
       </section>
