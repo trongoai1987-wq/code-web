@@ -8,8 +8,14 @@
 
 /** Số nhà + tên đường (hiện ở trang chủ cho gọn). */
 const addressShort = "216 Nguyễn Tất Thành";
-/** Xã/huyện/tỉnh. */
-const addressArea = "M'Đrắk, Đắk Lắk";
+/**
+ * Xã và tỉnh. Viết đúng như trên Zalo OA và giấy tờ hành chính ("M'Drắk",
+ * chữ D không gạch ngang) để Google nhận ra website, Zalo và Google Maps
+ * cùng là một nhà thuốc.
+ */
+const locality = "M'Drắk";
+const region = "Đắk Lắk";
+const addressArea = `Xã ${locality}, Tỉnh ${region}`;
 /** Giờ mở cửa — sửa 2 giá trị này là đổi toàn bộ website. */
 const openTime = "06:00";
 const closeTime = "21:00";
@@ -19,7 +25,7 @@ export const site = {
   shortName: "Thiện Hạnh",
   slogan: "Tận tâm chăm sóc sức khỏe gia đình bạn",
   description:
-    "Nhà thuốc Thiện Hạnh tại M'Đrắk, Đắk Lắk — tư vấn dược sĩ tận tình. Tra cứu sản phẩm và đặt hàng nhanh qua Zalo hoặc điện thoại.",
+    `Nhà thuốc Thiện Hạnh tại ${locality}, ${region} — tư vấn dược sĩ tận tình. Tra cứu sản phẩm và đặt hàng nhanh qua Zalo hoặc điện thoại.`,
   domain: "nhathuocthienhanh.com",
   url: "https://nhathuocthienhanh.com",
 
@@ -34,6 +40,9 @@ export const site = {
   address: `${addressShort}, ${addressArea}`,
   addressShort,
   addressArea,
+  /** Dùng riêng cho dữ liệu có cấu trúc gửi Google. */
+  addressLocality: locality,
+  addressRegion: region,
   hoursShort: `${openTime} – ${closeTime}`,
   workingHours: `${openTime} – ${closeTime} (Tất cả các ngày trong tuần)`,
   /** Dạng Google/schema.org, dùng cho dữ liệu có cấu trúc. */

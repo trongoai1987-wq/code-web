@@ -53,7 +53,8 @@ export default function RootLayout({
     address: {
       "@type": "PostalAddress",
       streetAddress: site.addressShort,
-      addressLocality: site.addressArea,
+      addressLocality: site.addressLocality,
+      addressRegion: site.addressRegion,
       addressCountry: "VN",
     },
     openingHours: site.openingHoursSchema,

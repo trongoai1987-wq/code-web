@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { icon: Store, value: site.addressArea, label: site.addressShort },
+  { icon: Store, value: site.addressLocality, label: site.addressShort },
   { icon: Users, value: "Dược sĩ", label: "Tư vấn trực tiếp" },
   { icon: Award, value: "Nguồn gốc", label: "Rõ ràng, có hóa đơn" },
 ];
