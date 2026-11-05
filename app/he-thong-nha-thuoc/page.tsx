@@ -4,6 +4,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { ZaloButton } from "@/components/ContactButtons";
 import { branches } from "@/lib/data";
 import { site } from "@/lib/site";
+import { cn } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Hệ thống nhà thuốc",
@@ -11,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function BranchesPage() {
+  const soCoSo = branches.length;
+
   return (
     <>
       <Breadcrumb items={[{ label: "Hệ thống nhà thuốc" }]} />
@@ -38,7 +41,9 @@ export default function BranchesPage() {
       </section>
 
       <section className="container-x py-10">
-        <div className="grid gap-5 md:grid-cols-2">
+        {/* Chỉ có 1 cơ sở thì để thẻ nằm ngang cho kín trang, nhiều cơ sở
+            mới chia 2 cột. */}
+        <div className={cn("grid gap-5", soCoSo > 1 && "md:grid-cols-2")}>
           {branches.map((b) => {
             const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
               b.address,
@@ -46,7 +51,10 @@ export default function BranchesPage() {
             return (
               <div
                 key={b.id}
-                className="flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card transition-shadow hover:shadow-pop"
+                className={cn(
+                  "flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-card transition-shadow hover:shadow-pop",
+                  soCoSo === 1 && "md:flex-row",
+                )}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -54,7 +62,10 @@ export default function BranchesPage() {
                   alt={`Mặt tiền ${b.name} tại ${b.address}`}
                   width={1000}
                   height={750}
-                  className="h-48 w-full object-cover sm:h-56"
+                  className={cn(
+                    "h-48 w-full object-cover sm:h-56",
+                    soCoSo === 1 && "md:h-auto md:w-5/12 md:self-stretch",
+                  )}
                 />
                 <div className="flex flex-1 flex-col p-6">
                   <h2 className="text-lg font-bold text-slate-900">{b.name}</h2>
