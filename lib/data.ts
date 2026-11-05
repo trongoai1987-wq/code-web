@@ -27,6 +27,12 @@ export interface Category {
   description: string;
 }
 
+/** Một quy cách đóng gói khác của cùng sản phẩm (ví dụ chai 120 viên). */
+export interface ProductVariant {
+  unit: string;
+  price: number;
+}
+
 export interface Product {
   id: number;
   slug: string;
@@ -34,9 +40,12 @@ export interface Product {
   category: CategorySlug;
   brand: string;
   origin: string;
-  /** Giá niêm yết (đồng). Để 0 nếu chưa muốn công khai giá. */
+  /** Giá niêm yết (đồng) của quy cách chính. Để 0 nếu chưa muốn công khai giá. */
   price: number;
+  /** Quy cách chính, ví dụ "Chai 30 viên". */
   unit: string;
+  /** Các quy cách khác kèm giá (nếu sản phẩm có nhiều cỡ đóng gói). */
+  variants?: ProductVariant[];
   image?: string;
   /** Ảnh thông tin của nhà sản xuất, hiện ở cuối trang chi tiết (tuỳ chọn). */
   infoImage?: string;
@@ -182,7 +191,8 @@ export const products: Product[] = [
     brand: "Thái Minh",
     origin: "Việt Nam",
     price: 169000,
-    unit: "Lọ 30 viên nang",
+    unit: "Chai 30 viên",
+    variants: [{ unit: "Chai 120 viên", price: 617500 }],
     image: "/san-pham/khuong-thao-dan-gold.jpg",
     infoImage: "/san-pham/khuong-thao-dan-gold-nhan.jpg",
     infoImageAlt:

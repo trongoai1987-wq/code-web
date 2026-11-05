@@ -40,6 +40,14 @@ export function ProductCard({ product }: { product: Product }) {
           <span className="block text-[13px] text-slate-500">
             / {product.unit}
           </span>
+          {product.variants?.map((v) => (
+            <span key={v.unit} className="block text-[13px] text-slate-500">
+              {v.unit}:{" "}
+              <span className="font-semibold text-accent-600">
+                {formatPrice(v.price)}
+              </span>
+            </span>
+          ))}
         </div>
 
         <Link

@@ -59,8 +59,12 @@ export default async function ProductDetailPage({
   // Thuốc kê đơn: chỉ tra cứu thông tin và hỏi dược sĩ, không mời đặt hàng.
   const canOrder = !product.prescription;
 
+  // Có nhiều quy cách thì không ghi sẵn cỡ nào, để khách tự chọn khi nhắn.
+  const hasVariants = (product.variants?.length ?? 0) > 0;
   const zaloMessage = canOrder
-    ? `Xin chào Nhà thuốc Thiện Hạnh, tôi muốn đặt mua: ${product.name} (${product.unit}).`
+    ? hasVariants
+      ? `Xin chào Nhà thuốc Thiện Hạnh, tôi muốn đặt mua: ${product.name}.`
+      : `Xin chào Nhà thuốc Thiện Hạnh, tôi muốn đặt mua: ${product.name} (${product.unit}).`
     : `Xin chào Nhà thuốc Thiện Hạnh, tôi muốn hỏi dược sĩ về: ${product.name}.`;
 
   return (
@@ -116,6 +120,27 @@ export default async function ProductDetailPage({
                   / {product.unit}
                 </span>
               </div>
+
+              {product.variants && product.variants.length > 0 && (
+                <div className="mt-3 border-t border-brand-100 pt-3">
+                  <p className="mb-1.5 text-sm font-medium text-slate-700">
+                    Quy cách khác:
+                  </p>
+                  <ul className="space-y-1">
+                    {product.variants.map((v) => (
+                      <li
+                        key={v.unit}
+                        className="flex justify-between gap-4 text-sm text-slate-600"
+                      >
+                        <span>{v.unit}</span>
+                        <span className="font-semibold text-accent-600">
+                          {formatPrice(v.price)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               {product.prescription && (
                 <p className="mt-3 flex items-start gap-1.5 rounded-lg bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800">
                   <FileText
@@ -248,7 +273,13 @@ export default async function ProductDetailPage({
                 <SpecRow label="Thương hiệu" value={product.brand} />
                 <SpecRow label="Xuất xứ" value={product.origin} />
                 <SpecRow label="Danh mục" value={cat.name} />
-                <SpecRow label="Quy cách" value={product.unit} />
+                <SpecRow
+                  label="Quy cách"
+                  value={[
+                    product.unit,
+                    ...(product.variants ?? []).map((v) => v.unit),
+                  ].join(" · ")}
+                />
                 <SpecRow
                   label="Loại"
                   value={product.prescription ? "Kê đơn" : "Không kê đơn"}
