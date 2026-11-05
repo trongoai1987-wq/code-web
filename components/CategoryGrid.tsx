@@ -79,7 +79,9 @@ export function CategoryGrid() {
             </span>
 
             <span className="block min-w-0">
-              <span className="block text-[13px] font-semibold leading-snug text-slate-800 transition-colors group-hover:text-brand-700 sm:text-sm lg:text-[15px]">
+              {/* Chừa sẵn chỗ cho tên dài 3 dòng để các thẻ cao bằng nhau
+                  trên điện thoại; từ màn hình lớn thì không cần nữa. */}
+              <span className="flex min-h-[3.4rem] items-start justify-center text-[13px] font-semibold leading-snug text-slate-800 transition-colors group-hover:text-brand-700 sm:min-h-[3.6rem] sm:text-sm lg:block lg:min-h-0 lg:text-[15px]">
                 {c.name}
               </span>
               <span className="mt-1 hidden text-xs leading-snug text-slate-500 lg:block">
