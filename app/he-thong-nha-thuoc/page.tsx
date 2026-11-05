@@ -15,27 +15,25 @@ export default function BranchesPage() {
     <>
       <Breadcrumb items={[{ label: "Hệ thống nhà thuốc" }]} />
 
-      <section className="relative overflow-hidden border-b border-slate-100">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/nha-thuoc/toan-canh.jpg"
-          alt={`Toàn cảnh mặt tiền ${site.name} nhìn từ đường ${site.addressShort}`}
-          width={1400}
-          height={627}
-          className="absolute inset-0 size-full object-cover"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-brand-900/90 via-brand-900/70 to-brand-900/40"
-        />
-        <div className="container-x relative py-12 sm:py-16">
-          <h1 className="max-w-2xl text-2xl font-extrabold text-white drop-shadow sm:text-3xl">
+      <section className="border-b border-slate-100 bg-gradient-to-br from-brand-50 to-white">
+        <div className="container-x py-10">
+          <h1 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">
             Hệ thống nhà thuốc Thiện Hạnh
           </h1>
-          <p className="mt-2 max-w-2xl text-sm text-brand-50/95 sm:text-base">
+          <p className="mt-2 max-w-2xl text-sm text-slate-600">
             Nhà thuốc phục vụ bà con tại {site.addressLocality}. Ghé nhà thuốc
             hoặc đặt hàng nhanh qua Zalo/điện thoại.
           </p>
+
+          {/* Hiện nguyên tấm ảnh (không cắt) để thấy được toàn cảnh cửa hàng */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/nha-thuoc/toan-canh.jpg"
+            alt={`Toàn cảnh mặt tiền ${site.name} tại ${site.address}`}
+            width={1400}
+            height={881}
+            className="mt-6 w-full rounded-3xl shadow-card"
+          />
         </div>
       </section>
 
