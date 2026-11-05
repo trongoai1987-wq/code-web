@@ -25,7 +25,7 @@ const gio = (t: string) => t.replace(/^0?(\d+):(\d+)$/, "$1h$2");
 export const site = {
   name: "Nhà Thuốc Thiện Hạnh",
   shortName: "Thiện Hạnh",
-  slogan: "Tận tâm chăm sóc sức khỏe gia đình bạn",
+  slogan: "Đủ thuốc – Giá rẻ",
   description:
     `Nhà thuốc Thiện Hạnh tại ${locality}, ${region} — tư vấn dược sĩ tận tình. Tra cứu sản phẩm và đặt hàng nhanh qua Zalo hoặc điện thoại.`,
   domain: "nhathuocthienhanh.com",

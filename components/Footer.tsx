@@ -67,6 +67,7 @@ export function Footer() {
             <li><Link href="/tin-suc-khoe/" className="inline-block py-1 text-brand-100/90 hover:text-white">Tin sức khỏe</Link></li>
             <li><Link href="/lien-he/" className="inline-block py-1 text-brand-100/90 hover:text-white">Liên hệ</Link></li>
             <li><Link href="/san-pham/" className="inline-block py-1 text-brand-100/90 hover:text-white">Tất cả sản phẩm</Link></li>
+            <li><Link href="/chinh-sach-doi-tra/" className="inline-block py-1 text-brand-100/90 hover:text-white">Chính sách đổi trả</Link></li>
           </ul>
         </div>
 

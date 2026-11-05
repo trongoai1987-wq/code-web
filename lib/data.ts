@@ -298,26 +298,38 @@ export const articles: Article[] = [
 ];
 
 // Cam kết / điểm mạnh
-export const commitments = [
-  {
-    icon: "BadgeCheck",
-    title: "Nguồn gốc rõ ràng",
-    description: "Sản phẩm có nguồn gốc xuất xứ, hóa đơn chứng từ đầy đủ.",
-  },
+export interface Commitment {
+  icon: string;
+  title: string;
+  description: string;
+  /** Trang nói rõ hơn về cam kết này (nếu có). */
+  href?: string;
+}
+
+export const commitments: Commitment[] = [
   {
     icon: "UserRound",
     title: "Dược sĩ tư vấn tận tâm",
     description: "Dược sĩ tư vấn đúng nhu cầu, hướng dẫn sử dụng an toàn.",
   },
   {
-    icon: "Truck",
-    title: "Đặt hàng qua Zalo",
-    description: "Nhắn Zalo hoặc gọi điện để được hỗ trợ đặt hàng nhanh.",
+    icon: "BadgeCheck",
+    title: "Thuốc chính hãng",
+    description:
+      "Cam kết 100% chính hãng, có nguồn gốc xuất xứ và hóa đơn chứng từ đầy đủ.",
   },
   {
-    icon: "Wallet",
-    title: "Giá niêm yết rõ ràng",
-    description: "Giá công khai, tư vấn sản phẩm phù hợp nhu cầu và chi phí.",
+    icon: "RotateCcw",
+    title: "Đổi trả trong 30 ngày",
+    description:
+      "Đổi sản phẩm mới hoặc hoàn tiền 100% khi lỗi do nhà sản xuất.",
+    href: "/chinh-sach-doi-tra/",
+  },
+  {
+    icon: "Truck",
+    title: "Miễn phí giao hàng",
+    description:
+      "Áp dụng theo chính sách giao hàng của nhà thuốc. Gọi hoặc nhắn Zalo để biết khu vực giao.",
   },
 ];
 

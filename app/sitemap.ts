@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/he-thong-nha-thuoc",
     "/tin-suc-khoe",
     "/lien-he",
+    "/chinh-sach-doi-tra",
   ].map((path) => ({
     url: `${base}${path}/`,
     lastModified: now,

@@ -83,24 +83,40 @@ export default function HomePage() {
       {/* ===== CAM KẾT ===== */}
       <section className="border-b border-slate-100 bg-gradient-to-b from-brand-50/60 to-white">
         <div className="container-x grid grid-cols-2 gap-3 py-7 sm:gap-4 lg:grid-cols-4">
-          {commitments.map((c) => (
-            <div
-              key={c.title}
-              className="flex items-start gap-3 rounded-2xl bg-white/80 p-3 ring-1 ring-brand-100/70 backdrop-blur-sm sm:p-4"
-            >
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-sm">
-                <Icon name={c.icon} className="size-6" />
-              </span>
-              <div className="min-w-0">
-                <p className="text-sm font-bold leading-snug text-slate-800">
-                  {c.title}
-                </p>
-                <p className="mt-0.5 hidden text-[13px] leading-snug text-slate-500 sm:block">
-                  {c.description}
-                </p>
+          {commitments.map((c) => {
+            const noiDung = (
+              <>
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-sm">
+                  <Icon name={c.icon} className="size-6" />
+                </span>
+                <span className="block min-w-0">
+                  <span className="block text-sm font-bold leading-snug text-slate-800">
+                    {c.title}
+                  </span>
+                  <span className="mt-0.5 hidden text-[13px] leading-snug text-slate-500 sm:block">
+                    {c.description}
+                  </span>
+                </span>
+              </>
+            );
+            const lop =
+              "flex items-start gap-3 rounded-2xl bg-white/80 p-3 ring-1 ring-brand-100/70 backdrop-blur-sm sm:p-4";
+
+            // Cam kết nào có trang nói rõ hơn thì bấm vào được
+            return c.href ? (
+              <Link
+                key={c.title}
+                href={c.href}
+                className={`${lop} transition-shadow hover:shadow-card`}
+              >
+                {noiDung}
+              </Link>
+            ) : (
+              <div key={c.title} className={lop}>
+                {noiDung}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
