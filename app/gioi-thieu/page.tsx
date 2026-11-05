@@ -60,18 +60,31 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-100 to-brand-50 p-10">
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+          <div className="space-y-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/nha-thuoc/mat-tien.jpg"
+              alt={`Mặt tiền ${site.name} tại ${site.address}`}
+              width={1000}
+              height={750}
+              className="w-full rounded-3xl object-cover shadow-card"
+            />
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-2xl bg-white p-5 text-center shadow-card"
+                  className="rounded-2xl border border-slate-100 bg-white p-4 text-center shadow-card"
                 >
-                  <s.icon className="mx-auto size-7 text-brand-600" aria-hidden="true" />
-                  <p className="mt-2 text-lg font-extrabold text-slate-900">
+                  <s.icon
+                    className="mx-auto size-6 text-brand-600"
+                    aria-hidden="true"
+                  />
+                  <p className="mt-2 text-[15px] font-extrabold leading-snug text-slate-900">
                     {s.value}
                   </p>
-                  <p className="text-xs text-slate-500">{s.label}</p>
+                  <p className="mt-0.5 text-xs leading-snug text-slate-500">
+                    {s.label}
+                  </p>
                 </div>
               ))}
             </div>
@@ -100,8 +113,33 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Cam kết */}
+      {/* Bên trong nhà thuốc */}
       <section className="container-x py-12">
+        <div className="relative overflow-hidden rounded-3xl shadow-card">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/nha-thuoc/ben-trong.jpg"
+            alt={`Quầy thuốc và kệ sản phẩm bên trong ${site.name}`}
+            width={1000}
+            height={750}
+            loading="lazy"
+            className="h-64 w-full object-cover sm:h-80 lg:h-96"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/75 via-slate-900/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-8">
+            <p className="text-lg font-extrabold sm:text-2xl">
+              Bên trong nhà thuốc
+            </p>
+            <p className="mt-1 max-w-2xl text-sm text-white/90 sm:text-base">
+              Thuốc và sản phẩm được sắp xếp theo từng nhóm trong tủ kính, có
+              dược sĩ trực tiếp tư vấn tại quầy.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Cam kết */}
+      <section className="container-x pb-12">
         <h2 className="text-center text-2xl font-extrabold text-slate-900 sm:text-3xl">
           Cam kết của Thiện Hạnh
         </h2>
