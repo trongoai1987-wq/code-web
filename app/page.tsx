@@ -8,9 +8,10 @@ import {
 } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { SectionHeading } from "@/components/Section";
+import { CategoryGrid } from "@/components/CategoryGrid";
 import { ProductCard } from "@/components/ProductCard";
 import { ZaloButton, CallButton } from "@/components/ContactButtons";
-import { categories, commitments, articles, getFeaturedProducts } from "@/lib/data";
+import { commitments, articles, getFeaturedProducts } from "@/lib/data";
 import { site } from "@/lib/site";
 
 export default function HomePage() {
@@ -85,16 +86,23 @@ export default function HomePage() {
       </section>
 
       {/* ===== CAM KẾT ===== */}
-      <section className="border-b border-slate-100 bg-white">
-        <div className="container-x grid grid-cols-2 gap-4 py-6 lg:grid-cols-4">
+      <section className="border-b border-slate-100 bg-gradient-to-b from-brand-50/60 to-white">
+        <div className="container-x grid grid-cols-2 gap-3 py-7 sm:gap-4 lg:grid-cols-4">
           {commitments.map((c) => (
-            <div key={c.title} className="flex items-center gap-3">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+            <div
+              key={c.title}
+              className="flex items-start gap-3 rounded-2xl bg-white/80 p-3 ring-1 ring-brand-100/70 backdrop-blur-sm sm:p-4"
+            >
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-sm">
                 <Icon name={c.icon} className="size-6" />
               </span>
-              <div>
-                <p className="text-sm font-bold text-slate-800">{c.title}</p>
-                <p className="hidden text-xs text-slate-500 sm:block">{c.description}</p>
+              <div className="min-w-0">
+                <p className="text-sm font-bold leading-snug text-slate-800">
+                  {c.title}
+                </p>
+                <p className="mt-0.5 hidden text-[13px] leading-snug text-slate-500 sm:block">
+                  {c.description}
+                </p>
               </div>
             </div>
           ))}
@@ -102,24 +110,21 @@ export default function HomePage() {
       </section>
 
       {/* ===== DANH MỤC ===== */}
-      <section className="container-x py-12">
-        <SectionHeading
-          title="Danh mục sản phẩm"
-          subtitle="Đa dạng sản phẩm chăm sóc sức khỏe cho cả gia đình"
+      <section className="relative overflow-hidden py-12">
+        <div
+          aria-hidden="true"
+          className="absolute -right-24 top-10 size-72 rounded-full bg-brand-50/70 blur-3xl"
         />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {categories.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/danh-muc/${c.slug}/`}
-              className="group flex flex-col items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 text-center shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-brand-200 hover:shadow-pop"
-            >
-              <span className="flex size-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
-                <Icon name={c.icon} className="size-7" />
-              </span>
-              <span className="text-sm font-semibold text-slate-700">{c.name}</span>
-            </Link>
-          ))}
+        <div
+          aria-hidden="true"
+          className="absolute -left-24 bottom-0 size-72 rounded-full bg-accent-50/70 blur-3xl"
+        />
+        <div className="container-x relative">
+          <SectionHeading
+            title="Danh mục sản phẩm"
+            subtitle="Đa dạng sản phẩm chăm sóc sức khỏe cho cả gia đình"
+          />
+          <CategoryGrid />
         </div>
       </section>
 
