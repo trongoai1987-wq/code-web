@@ -26,7 +26,7 @@ export const site = {
   // ——— THÔNG TIN LIÊN HỆ (hãy thay bằng số thật của bạn) ———
   hotline: "0946 544 440",
   phone: "0962 380 448",
-  // Link Zalo: dùng số điện thoại (bỏ số 0, thêm 84) hoặc để nguyên số
+  // Số Zalo cá nhân — chỉ dùng dự phòng nếu chưa khai báo Zalo OA bên dưới.
   zalo: "0946544440",
   // Hộp thư cskh@nhathuocthienhanh.com chưa được tạo nên tạm dùng Gmail của chủ
   // nhà thuốc (xác nhận 04/11/2026). Khi lập hộp thư theo tên miền thì đổi lại.
@@ -43,14 +43,19 @@ export const site = {
 
   social: {
     facebook: "",
+    // Zalo OA chính thức của nhà thuốc — mọi nút Zalo trên web đều trỏ về đây.
     zaloOA: "https://zalo.me/1403435172595404466",
     youtube: "",
   },
 } as const;
 
-/** Tạo link chat Zalo (kèm nội dung soạn sẵn nếu có). */
+/**
+ * Tạo link chat Zalo (kèm nội dung soạn sẵn nếu có).
+ * Ưu tiên Zalo OA của nhà thuốc; nếu chưa khai báo OA thì dùng số Zalo cá nhân.
+ */
 export function zaloLink(message?: string): string {
-  const base = `https://zalo.me/${site.zalo}`;
+  const oa: string = site.social.zaloOA;
+  const base = oa !== "" ? oa : `https://zalo.me/${site.zalo}`;
   return message ? `${base}?text=${encodeURIComponent(message)}` : base;
 }
 

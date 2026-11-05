@@ -13,6 +13,7 @@ export function ContactForm() {
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [touched, setTouched] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const nameError = touched && name.trim() === "";
   const phoneError = touched && phone.trim() === "";
@@ -26,11 +27,20 @@ export function ContactForm() {
     ].join("\n");
   }
 
-  function handleZalo(e: React.FormEvent) {
+  async function handleZalo(e: React.FormEvent) {
     e.preventDefault();
     setTouched(true);
     if (name.trim() === "" || phone.trim() === "") return;
-    window.open(zaloLink(buildMessage()), "_blank", "noopener,noreferrer");
+    const text = buildMessage();
+    // Zalo OA không nhận sẵn nội dung qua đường link, nên chép vào bộ nhớ tạm
+    // để khách chỉ việc dán vào khung chat.
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+    } catch {
+      setCopied(false);
+    }
+    window.open(zaloLink(text), "_blank", "noopener,noreferrer");
   }
 
   function handleEmail() {
@@ -125,10 +135,20 @@ export function ContactForm() {
         </button>
       </div>
 
-      <p className="flex items-start gap-1.5 text-xs text-slate-400">
+      {copied && (
+        <p
+          role="status"
+          className="rounded-xl bg-brand-50 px-4 py-3 text-sm font-medium text-brand-800"
+        >
+          Đã sao chép nội dung. Khi cửa sổ Zalo mở ra, bạn chỉ cần nhấn giữ vào
+          khung chat rồi chọn <strong>Dán</strong> và gửi.
+        </p>
+      )}
+
+      <p className="flex items-start gap-1.5 text-[13px] text-slate-500">
         <Send className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
-        Sau khi nhấn gửi, nội dung sẽ được soạn sẵn để bạn gửi cho dược sĩ qua
-        Zalo hoặc email. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.
+        Nhấn “Gửi qua Zalo” để nhắn cho dược sĩ, hoặc “Gửi email” để mở sẵn thư.
+        Chúng tôi sẽ phản hồi trong thời gian sớm nhất.
       </p>
     </form>
   );
