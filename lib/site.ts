@@ -19,6 +19,8 @@ const addressArea = `Xã ${locality}, Tỉnh ${region}`;
 /** Giờ mở cửa — sửa 2 giá trị này là đổi toàn bộ website. */
 const openTime = "06:00";
 const closeTime = "21:00";
+/** "06:00" -> "6h00", để viết trong câu văn cho tự nhiên. */
+const gio = (t: string) => t.replace(/^0?(\d+):(\d+)$/, "$1h$2");
 
 export const site = {
   name: "Nhà Thuốc Thiện Hạnh",
@@ -44,6 +46,8 @@ export const site = {
   addressLocality: locality,
   addressRegion: region,
   hoursShort: `${openTime} – ${closeTime}`,
+  /** Dạng viết trong câu: "từ 6h00 đến 21h00". */
+  hoursSentence: `từ ${gio(openTime)} đến ${gio(closeTime)}`,
   workingHours: `${openTime} – ${closeTime} (Tất cả các ngày trong tuần)`,
   /** Dạng Google/schema.org, dùng cho dữ liệu có cấu trúc. */
   openingHoursSchema: `Mo-Su ${openTime}-${closeTime}`,
