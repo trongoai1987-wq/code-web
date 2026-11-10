@@ -21,6 +21,7 @@ import {
   isSupplement,
 } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
+import { canonical } from "@/lib/site";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -37,6 +38,7 @@ export async function generateMetadata({
   return {
     title: product.name,
     description: product.shortDescription,
+    alternates: { canonical: canonical(`/san-pham/${product.slug}/`) },
     openGraph: {
       title: product.name,
       description: product.shortDescription,

@@ -11,6 +11,7 @@ import {
   getProductsByCategory,
   type CategorySlug,
 } from "@/lib/data";
+import { canonical } from "@/lib/site";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -27,6 +28,7 @@ export async function generateMetadata({
   return {
     title: cat.name,
     description: cat.description,
+    alternates: { canonical: canonical(`/danh-muc/${cat.slug}/`) },
   };
 }
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ShieldCheck, ArrowRight, MessageCircle } from "lucide-react";
 import { Icon } from "@/components/Icon";
 import { SectionHeading } from "@/components/Section";
@@ -7,7 +8,12 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { ProductCard } from "@/components/ProductCard";
 import { ZaloButton, CallButton } from "@/components/ContactButtons";
 import { commitments, articles, getFeaturedProducts } from "@/lib/data";
-import { site } from "@/lib/site";
+import { site, canonical } from "@/lib/site";
+
+// Tiêu đề và mô tả trang chủ lấy từ app/layout.tsx; ở đây chỉ khai địa chỉ chuẩn.
+export const metadata: Metadata = {
+  alternates: { canonical: canonical("/") },
+};
 
 export default function HomePage() {
   const featured = getFeaturedProducts(8);

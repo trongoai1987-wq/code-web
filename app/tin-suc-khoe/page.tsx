@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ArticleCard, FeaturedArticleCard } from "@/components/ArticleCard";
 import { articles } from "@/lib/data";
+import { canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Tin sức khỏe",
   description:
     "Kiến thức chăm sóc sức khỏe, hướng dẫn dùng thuốc an toàn và bí quyết sống khỏe từ đội ngũ dược sĩ Nhà Thuốc Thiện Hạnh.",
+  alternates: { canonical: canonical("/tin-suc-khoe/") },
 };
 
 export default function NewsPage() {

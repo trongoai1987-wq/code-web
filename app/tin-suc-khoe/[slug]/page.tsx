@@ -5,6 +5,7 @@ import { CalendarDays, Store, ArrowLeft } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ZaloButton, CallButton } from "@/components/ContactButtons";
 import { articles, getArticleBySlug } from "@/lib/data";
+import { canonical } from "@/lib/site";
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -21,6 +22,7 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.excerpt,
+    alternates: { canonical: canonical(`/tin-suc-khoe/${article.slug}/`) },
     openGraph: {
       type: "article",
       title: article.title,

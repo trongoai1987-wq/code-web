@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ContactForm } from "@/components/ContactForm";
-import { site, zaloLink, telLink } from "@/lib/site";
+import { site, zaloLink, telLink, canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Liên hệ",
   description: `Liên hệ ${site.name} — hotline ${site.hotline}, Zalo, email. Gửi yêu cầu tư vấn để được dược sĩ hỗ trợ nhanh chóng.`,
+  alternates: { canonical: canonical("/lien-he/") },
 };
 
 export default function ContactPage() {

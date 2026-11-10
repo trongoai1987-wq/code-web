@@ -3,12 +3,13 @@ import { MapPin, Phone, Clock, Navigation } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ZaloButton } from "@/components/ContactButtons";
 import { branches } from "@/lib/data";
-import { site } from "@/lib/site";
+import { site, canonical } from "@/lib/site";
 import { cn } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "Hệ thống nhà thuốc",
   description: `Tìm chi nhánh ${site.name} gần bạn nhất. Địa chỉ, số điện thoại và giờ mở cửa các nhà thuốc Thiện Hạnh.`,
+  alternates: { canonical: canonical("/he-thong-nha-thuoc/") },
 };
 
 export default function BranchesPage() {

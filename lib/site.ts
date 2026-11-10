@@ -54,6 +54,11 @@ export const site = {
   // Số Giấy chứng nhận đủ điều kiện kinh doanh dược (anh cung cấp 04/11/2026) — đối chiếu lại với bản giấy.
   license: "23525/ĐKKDD-ĐL",
 
+  // Toạ độ GPS của nhà thuốc, lấy từ chính hồ sơ Google Maps của nhà thuốc (10/11/2026).
+  // Dùng để khai báo vị trí cho Google — giúp hiện đúng chỗ trên bản đồ và trong
+  // các tìm kiếm kiểu "nhà thuốc gần đây".
+  geo: { lat: 12.7534549, lng: 108.7383174 },
+
   social: {
     // Trang Facebook chính thức của nhà thuốc (không kèm ?locale=, để link gọn và sạch).
     facebook: "https://www.facebook.com/nhathuocthienhanh9",
@@ -76,4 +81,17 @@ export function zaloLink(message?: string): string {
 /** Link gọi điện. */
 export function telLink(): string {
   return `tel:${site.hotline.replace(/\s/g, "")}`;
+}
+
+/**
+ * Địa chỉ chuẩn (canonical) của một trang — nói với Google "đây mới là bản chính".
+ *
+ * Luôn trả về địa chỉ tuyệt đối, luôn có dấu "/" ở cuối, để khớp từng ký tự với
+ * sitemap.xml và với cấu hình `trailingSlash: true`. Dùng địa chỉ tuyệt đối là cố ý:
+ * Next.js chỉ ghép `metadataBase` cho đường dẫn tương đối, nên tuyệt đối thì kết quả
+ * chắc chắn, không phụ thuộc cách Next diễn giải.
+ */
+export function canonical(path = "/"): string {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return `${site.url}${p.endsWith("/") ? p : `${p}/`}`;
 }

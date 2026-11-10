@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { CalendarCheck, ReceiptText, ShieldAlert } from "lucide-react";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ZaloButton, CallButton } from "@/components/ContactButtons";
-import { site } from "@/lib/site";
+import { site, canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Chính sách đổi trả & bảo hành",
   description: `Chính sách đổi trả, hoàn tiền và bảo hành tại ${site.name}: đổi sản phẩm mới hoặc hoàn tiền 100% trong 30 ngày khi lỗi do nhà sản xuất.`,
+  alternates: { canonical: canonical("/chinh-sach-doi-tra/") },
 };
 
 /**

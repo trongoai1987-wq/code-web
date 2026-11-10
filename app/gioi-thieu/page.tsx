@@ -4,11 +4,12 @@ import { Icon } from "@/components/Icon";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ZaloButton, CallButton } from "@/components/ContactButtons";
 import { commitments } from "@/lib/data";
-import { site } from "@/lib/site";
+import { site, canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Giới thiệu",
   description: `Câu chuyện và cam kết của ${site.name} — hệ thống nhà thuốc tận tâm chăm sóc sức khỏe gia đình bạn.`,
+  alternates: { canonical: canonical("/gioi-thieu/") },
 };
 
 const stats = [

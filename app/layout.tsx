@@ -57,6 +57,16 @@ export default function RootLayout({
       addressRegion: site.addressRegion,
       addressCountry: "VN",
     },
+    // Toạ độ GPS — giúp Google đặt nhà thuốc đúng vị trí trên bản đồ và xuất hiện
+    // trong các tìm kiếm kiểu "nhà thuốc gần đây".
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.geo.lat,
+      longitude: site.geo.lng,
+    },
+    hasMap: `https://www.google.com/maps/search/?api=1&query=${site.geo.lat},${site.geo.lng}`,
+    // Ảnh mặt tiền thật, để Google có hình nhận diện cửa hàng.
+    image: `${site.url}/nha-thuoc/mat-tien.jpg`,
     openingHours: site.openingHoursSchema,
     slogan: site.slogan,
     // Các trang chính thức khác của nhà thuốc. Google dùng "sameAs" để hiểu

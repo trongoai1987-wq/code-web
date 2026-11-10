@@ -3,11 +3,13 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ProductBrowser } from "@/components/ProductBrowser";
 import { products } from "@/lib/data";
+import { canonical } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Tất cả sản phẩm",
   description:
     "Tra cứu toàn bộ sản phẩm thuốc, thực phẩm chức năng, vitamin, mỹ phẩm dược và thiết bị y tế chính hãng tại Nhà Thuốc Thiện Hạnh.",
+  alternates: { canonical: canonical("/san-pham/") },
 };
 
 export default function ProductsPage() {
