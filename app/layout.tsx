@@ -59,6 +59,9 @@ export default function RootLayout({
     },
     openingHours: site.openingHoursSchema,
     slogan: site.slogan,
+    // Các trang chính thức khác của nhà thuốc. Google dùng "sameAs" để hiểu
+    // website, Facebook và Zalo đều là cùng một cơ sở kinh doanh.
+    sameAs: [site.social.facebook, site.social.zaloOA, site.social.youtube].filter(Boolean),
   };
 
   return (

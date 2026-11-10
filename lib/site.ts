@@ -55,7 +55,8 @@ export const site = {
   license: "23525/ĐKKDD-ĐL",
 
   social: {
-    facebook: "",
+    // Trang Facebook chính thức của nhà thuốc (không kèm ?locale=, để link gọn và sạch).
+    facebook: "https://www.facebook.com/nhathuocthienhanh9",
     // Zalo OA chính thức của nhà thuốc — mọi nút Zalo trên web đều trỏ về đây.
     zaloOA: "https://zalo.me/1403435172595404466",
     youtube: "",
