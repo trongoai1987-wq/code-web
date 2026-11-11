@@ -48,3 +48,7 @@ next-env.d.ts
 
 # ghi chú nội bộ của chủ dự án (không đưa lên GitHub)
 PROMPT-trien-khai-web.md
+
+# file lam viec noi bo: mau Excel nhap san pham, to in QR
+/nhap-san-pham/
+/in-an/
