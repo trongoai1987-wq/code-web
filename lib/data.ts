@@ -221,6 +221,72 @@ export const products: Product[] = [
       "Công ty Cổ phần Công nghệ cao Thái Minh — Lô CN5, Khu công nghiệp Thạch Thất – Quốc Oai, thị trấn Quốc Oai, huyện Quốc Oai, Hà Nội.",
     prescription: false,
   },
+  {
+    id: 3,
+    slug: "siro-thien-mon-bo-phoi-premium",
+    name: "Siro Thiên Môn Bổ Phổi Premium",
+    category: "thuc-pham-chuc-nang",
+    brand: "Titafa",
+    origin: "Việt Nam",
+    price: 75000,
+    unit: "Chai 280ml",
+    image: "/san-pham/thien-mon-bo-phoi-premium.jpg",
+    infoImage: "/san-pham/thien-mon-bo-phoi-thanh-phan.jpg",
+    infoImageAlt:
+      "Thành phần Siro Thiên Môn Bổ Phổi Premium: AP-Bio chiết xuất Xuyên Tâm Liên kết hợp 12 loại dược liệu.",
+    shortDescription:
+      "Thực phẩm bảo vệ sức khỏe hỗ trợ giảm ho khan, ho gió, ho đờm và đau rát hầu họng.",
+    description: [
+      "Siro Thiên Môn Bổ Phổi Premium là thực phẩm bảo vệ sức khỏe dạng siro của Công ty Cổ phần Titafa, kết hợp AP-Bio (chiết xuất Xuyên Tâm Liên) và chiết xuất Lá Thường Xuân với 12 vị dược liệu quen thuộc như Thiên Môn Đông, Mạch Môn Đông, Húng Chanh, Lá Hen, Kinh Giới và Bách Bộ.",
+      "Sản phẩm dùng cho trẻ từ 6 tuổi trở lên và người lớn bị ho khan, ho gió, ho có đờm, đau rát hầu họng, khàn tiếng.",
+      "Số xác nhận nội dung quảng cáo: 896/2022/XNQC-ATTP.",
+    ],
+    ingredients:
+      "Thành phần cấu tạo cho 280ml — AP-Bio (chiết xuất Xuyên Tâm Liên, Andrographis Paniculata, tỉ lệ chiết 14/1) 560mg; chiết xuất Lá Thường Xuân (Ivy Leaf Extract, nhập khẩu từ Thổ Nhĩ Kỳ) 1.200mg; 7.980mg cao lỏng hỗn hợp tương đương thảo mộc thô (tỉ lệ 1/10) gồm: Húng Chanh (Coleus Amboinicus) 14.000mg, Mạch Môn Đông (Ophiopogon Japonicus) 8.400mg, Thiên Môn Đông (Asparagus Cochinchinensis) 8.400mg, Kinh Giới (Elsholtzia Ciliata) 8.400mg, Bách Bộ (Stemona Tuberosa) 8.400mg, Tang Bạch Bì (Cortex Mori Albae Radicis) 8.400mg, Lá Hen (Calotropis Gigantea) 5.600mg, Trần Bì (Citrus Reticulata) 5.600mg, Bình Vôi (Stephania Glabra) 5.600mg, Gừng (Zingiber Officinale) 4.200mg, Actiso (Cynara Scolymus) 2.800mg. Phụ liệu: chất điều vị (Sorbitol, Acesulfam kali), chất chống oxy hóa (Dinatri ethylendiamintetra acetat), chất điều chỉnh độ axit (Acid citric), chất làm dày (Gôm xanthan), chất ổn định (Trinatri citrat), chất tạo màu (Tartrazin), hương liệu (hương cam tổng hợp), nước tinh khiết. Thể tích thực: 280ml ± 7,5%.",
+    uses: [
+      "Hỗ trợ giảm ho khan, ho gió, ho có đờm",
+      "Hỗ trợ bổ phổi và dưỡng ẩm đường hô hấp",
+      "Hỗ trợ giảm đau rát hầu họng, khàn tiếng do viêm họng, viêm phế quản",
+    ],
+    dosage:
+      "Trẻ từ 6–14 tuổi: uống 20ml/lần, ngày 2 lần. Trẻ trên 14 tuổi và người lớn: uống 20ml/lần, ngày 3 lần. Nên uống trước hoặc sau khi ăn khoảng 30 phút để đạt hiệu quả tốt nhất.",
+    distributor:
+      "Công ty Cổ phần Titafa — 160 Hiền Vương, Phường Phú Thạnh, Thành phố Hồ Chí Minh, Việt Nam.",
+    manufacturer: "Việt Nam",
+    prescription: false,
+  },
+  {
+    id: 4,
+    slug: "haecho-k2",
+    name: "HAECHO K2",
+    category: "thuc-pham-chuc-nang",
+    brand: "Lustrel Laboratoires",
+    origin: "Pháp",
+    // Chưa công khai giá — trang web sẽ hiện "Liên hệ dược sĩ" thay cho con số.
+    price: 0,
+    unit: "Hộp 60 viên",
+    image: "/san-pham/haecho-k2.jpg",
+    shortDescription:
+      "Thực phẩm bảo vệ sức khỏe cung cấp canxi hữu cơ từ tảo biển đỏ kết hợp vitamin D3, K2, giúp hỗ trợ xương răng vững chắc cho người trưởng thành.",
+    description: [
+      "Haecho K2 cung cấp bộ ba canxi, D3 và K2 giúp nạp đủ dưỡng chất thiết yếu cho hệ vận động. Nhờ đó, sản phẩm hỗ trợ củng cố độ bền cho cấu trúc khung xương và duy trì men răng vững chắc.",
+      "Đối tượng sử dụng: người lớn cần bù đắp lượng canxi thiếu hụt do chế độ dinh dưỡng chưa đủ chất; người già có hệ xương khớp suy yếu.",
+      "Dạng bào chế: viên nang cứng. Số đăng ký sản phẩm: 7354/2023/ĐKSP.",
+    ],
+    ingredients:
+      "Thành phần mỗi liều — Chiết xuất tảo biển đỏ (Lithothamnium Calcareum) 1.080mg (cung cấp Canxi 324mg, Magie 10,8mg); Magie oxide 120mg (cung cấp Magie 72,4mg); Kẽm oxide 3,75mg (cung cấp Kẽm 3mg); Mangan sulfate 2,12mg (cung cấp Mangan 0,7mg); Natri selenit 56mcg (cung cấp Selen 25mcg); Vitamin K2 (Menaquinone) 22,5mcg; Vitamin D3 (Cholecalciferol) 5mcg.",
+    uses: [
+      "Cung cấp bộ ba canxi, D3 và K2 cho hệ vận động",
+      "Hỗ trợ củng cố độ bền cho cấu trúc khung xương",
+      "Hỗ trợ duy trì men răng vững chắc",
+    ],
+    dosage:
+      "Liều dùng 2 viên/ngày. Uống nguyên viên nang với nước, sau khi ăn.",
+    notes:
+      "Chống chỉ định: người có nồng độ canxi niệu và canxi máu vượt ngưỡng bình thường; người dị ứng với bất kỳ thành phần nào của sản phẩm; người đang dùng thuốc chống đông. Không tự ý tăng liều để tránh nguy cơ dư thừa canxi gây sỏi thận hoặc vôi hóa mạch máu. Trẻ dưới 18 tuổi cần có chỉ định của chuyên gia y tế; phụ nữ có thai và cho con bú chỉ dùng khi được bác sĩ đồng ý. Bảo quản nơi khô ráo, thoáng mát (dưới 30°C), tránh ánh nắng mạnh, để xa tầm tay trẻ em. Không dùng khi sản phẩm quá hạn sử dụng.",
+    distributor: "Công ty TNHH Đầu tư Anh Gia Khánh.",
+    prescription: false,
+  },
 ];
 
 export interface Branch {
