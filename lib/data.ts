@@ -287,6 +287,74 @@ export const products: Product[] = [
     distributor: "Công ty TNHH Đầu tư Anh Gia Khánh.",
     prescription: false,
   },
+  {
+    id: 5,
+    slug: "austar-ultra-omega-3-6-9",
+    name: "Austar Ultra Omega 3-6-9",
+    category: "thuc-pham-chuc-nang",
+    brand: "Austar",
+    origin: "Úc",
+    // Chưa công khai giá — trang web sẽ hiện "Liên hệ dược sĩ" thay cho con số.
+    price: 0,
+    unit: "Hộp 60 viên nang mềm",
+    image: "/san-pham/austar-ultra-omega-3-6-9.jpg",
+    shortDescription:
+      "Thực phẩm bảo vệ sức khỏe hỗ trợ cải thiện chỉ số triglycerid máu, hỗ trợ cải thiện trí nhớ và hỗ trợ sức khỏe mắt.",
+    description: [
+      "Austar Ultra Omega 3-6-9 kết hợp dầu cá tự nhiên, dầu hoa anh thảo và dầu hạt lanh, cung cấp các axit béo Omega-3, Omega-6 và Omega-9.",
+      "Sản phẩm không chứa đường, gluten, trứng, sữa, các loại hạt, chất làm ngọt nhân tạo, hương thực phẩm và chất bảo quản. Không chứa thành phần biến đổi gen. Có chứa sulfites.",
+      "Số đăng ký sản phẩm: 729/2025/ĐKSP.",
+    ],
+    ingredients: "Dầu cá, dầu hoa anh thảo, dầu hạt lanh.",
+    uses: [
+      "Hỗ trợ cải thiện chỉ số triglycerid máu",
+      "Hỗ trợ cải thiện trí nhớ",
+      "Hỗ trợ tăng cường sức khỏe tim mạch",
+      "Hỗ trợ sức khỏe mắt",
+    ],
+    dosage:
+      "Người lớn uống 2 viên mỗi lần, 1–3 lần mỗi ngày, trong bữa ăn, hoặc theo chỉ dẫn của chuyên gia y tế.",
+    notes:
+      "Sản phẩm có chứa sulfites. Không sử dụng nếu niêm phong nắp bị hỏng. Bảo quản dưới 25°C, nơi khô ráo, tránh ánh nắng trực tiếp.",
+    distributor:
+      "Công ty TNHH Austar Pharma Việt Nam — 350 Bình Lợi, Phường 13, Quận Bình Thạnh, TP.HCM (nhập khẩu và phân phối).",
+    manufacturer:
+      "Austar Pharma Pty Ltd — 6A Sturt Ave, Toorak Gardens SA 5065, Australia.",
+    prescription: false,
+  },
+  {
+    id: 6,
+    slug: "canxi-tao-bien",
+    name: "Canxi Tảo Biển",
+    category: "thuc-pham-chuc-nang",
+    brand: "Kingphar",
+    origin: "Việt Nam",
+    // Chưa công khai giá — trang web sẽ hiện "Liên hệ dược sĩ" thay cho con số.
+    price: 0,
+    unit: "Hộp 60 viên",
+    image: "/san-pham/canxi-tao-bien.jpg",
+    infoImage: "/san-pham/canxi-tao-bien-nhan.jpg",
+    infoImageAlt:
+      "Nhãn sau hộp Canxi Tảo Biển Kingphar: thành phần, cách dùng, bảo quản, hạn dùng và số tiêu chuẩn 34/VTV/2026.",
+    shortDescription:
+      "Thực phẩm bổ sung canxi tảo biển kết hợp magie oxid và collagen type II, dùng cho trẻ từ 6 tuổi trở lên và người lớn.",
+    description: [
+      "Thực phẩm bổ sung dạng viên, khối lượng mỗi viên 1.350mg (±10%).",
+      "Đối tượng sử dụng: trẻ em từ 6 tuổi trở lên và người lớn.",
+      "Tiêu chuẩn áp dụng: TCCS. Số tiêu chuẩn: 34/VTV/2026.",
+      "Hạn sử dụng 36 tháng kể từ ngày sản xuất. Ngày sản xuất và hạn sử dụng được in trên bao bì sản phẩm.",
+    ],
+    ingredients:
+      "Mỗi viên 1.350mg chứa: Canxi tảo biển 300mg; Magie oxid 50mg; Collagen type II 50mg; dầu đậu nành; chất ổn định (420(ii), 422, 322(i)); gelatin; ethyl vanilin; màu thực phẩm tổng hợp (155, 171, 172(ii)); chất bảo quản (202, 211); cồn 96°; nước tinh khiết vừa đủ.",
+    dosage:
+      "Người lớn và trẻ em trên 6 tuổi uống 2 viên mỗi ngày. Phụ nữ mang thai và đang cho con bú, người già có nguy cơ loãng xương, trẻ vị thành niên đang trong giai đoạn phát triển uống 3 viên mỗi ngày. Nên uống một lần vào buổi sáng.",
+    notes:
+      "Không dùng cho người mẫn cảm với bất kỳ thành phần nào của sản phẩm. Bảo quản nơi khô, mát, tránh ánh nắng mặt trời trực tiếp. Để xa tầm tay trẻ em.",
+    distributor:
+      "Công ty TNHH Sản xuất và Thương mại Vinh Thịnh Vượng — Thôn Bình Phú, Xã Việt Yên, Tỉnh Hưng Yên, Việt Nam.",
+    manufacturer: "Việt Nam (Công ty TNHH Sản xuất và Thương mại Vinh Thịnh Vượng).",
+    prescription: false,
+  },
 ];
 
 export interface Branch {
